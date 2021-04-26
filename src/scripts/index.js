@@ -13,14 +13,26 @@ const lecturePreloader = new Preloader('.lecture', 'lecture');
 // Показать прелоадер пока идет загрузка страницы
 lecturePreloader.show();
 
-(async function()
+(async () =>
 {
+	/**
+	 * Найденный ID лекции в адресной строке
+	 *
+	 * @type {RegExpMatchArray}
+	 */
+	const lectureIdMatch = location.pathname.match(/(?<=lecture\/:*)[^:\/]+/);
+
 	/**
 	 * ID лекции
 	 *
 	 * @type {string}
 	 */
-	const lectureId = location.pathname.split('/').slice(-2, -1)[0].toLowerCase();
+	const lectureId = lectureIdMatch && lectureIdMatch[0]?.toLowerCase();
+
+	if (!lectureId) {
+		showError('<p>Лекция указана неправильно</p><p>Проверьте название лекции</p>');
+		return;
+	}
 
 	/**
 	 * Лекция для оценивания
