@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Оценка лекции</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons">
+</head>
+<body>
+
+<section class="lecture">
+	<h1 class="lecture-header" data-hidonerror="true" data-preload="true" data-block="lecture"></h1>
+
+	<div class="lecture-rate" data-hidonerror="true" data-preload="true" data-block="lecture"></div>
+
+	<div class="lecture-message"></div>
+
+	<div class="lecture-statistics" data-hidonerror="true" data-preload="true" data-block="lecture">
+		<h2 class="lecture-statistics-header">Статистика</h2>
+		<div class="lecture-statistics-scores"></div>
+	</div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+<script src="./../scripts/app.js"></script>
+</body>
+</html>
