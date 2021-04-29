@@ -1,3 +1,5 @@
+import './../styles/preloader.scss';
+
 export default class Preloader
 {
 	/**
@@ -53,22 +55,37 @@ export default class Preloader
 		return this.element.style.display !== 'none';
 	}
 
-	show()
+	/**
+	 * Показать прелоадер
+	 *
+	 * @param {string} [property='opacity'] - CSS свойство элементов, которое нужно изменить при показе прелоадера
+	 * @param {any} [value='0'] - CSS значение свойства элементов, которое нужно изменить при показе прелоадера
+	 */
+	show(property = 'opacity', value = '0')
 	{
 		if (!this.isActive)
 		{
 			document.querySelectorAll(`[data-preload="true"][data-block="${this.block}"]`)
-			.forEach(element => element.style.opacity = '0');
+			.forEach(element =>
+			{
+				element.dataset[`prev${property}`] = getComputedStyle(element)[property];
+				element.style[property] = value;
+			});
 			this.element.style.display = 'flex';
 		}
 	}
 
-	hide()
+	/**
+	 * Скрытие прелоадера
+	 *
+	 * @param {string} [property='opacity'] - CSS свойство элементов, которое нужно изменить при скрытии прелоадера
+	 */
+	hide(property = 'opacity')
 	{
 		if (this.isActive)
 		{
 			document.querySelectorAll(`[data-preload="true"][data-block="${this.block}"]`)
-			.forEach(element => element.style.opacity = '1');
+			.forEach(element => element.style[property] = element.dataset[`prev${property}`]);
 			this.element.style.display = 'none';
 		}
 	}

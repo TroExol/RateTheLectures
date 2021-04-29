@@ -1,0 +1,53 @@
+@import "variables";
+@import "reset";
+@import "main";
+
+body {
+  display: block;
+  height: auto;
+}
+
+.lectures {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px 0;
+  text-align: center;
+
+  &-header {
+    margin-bottom: 25px;
+  }
+
+  &-message {
+    display: none;
+    margin-bottom: 20px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-lecture {
+      display: block;
+      min-width: 50vw;
+      padding: 25px 20px;
+      font-size: 18px;
+      color: #000;
+      text-align: center;
+      text-decoration: none;
+      background-color: $secondBackgroundColor;
+      box-shadow: 0 4px 20px $boxShadowColor;
+      border-radius: 20px;
+      transition: transform 0.1s;
+
+      &:not(:first-child) {
+        margin-top: 25px;
+      }
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+}

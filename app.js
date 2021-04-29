@@ -13,7 +13,7 @@ app.get('/lecture/:id', (_, res) =>
 });
 
 app.get('*', function(_, res){
-	res.sendFile(path.join(__dirname + `/${dir}/404/index.html`), 404);
+	res.redirect('/');
 });
 
 app.listen(port, () =>
